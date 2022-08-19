@@ -20,5 +20,5 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            whoami
-            ls -al
+            docker ps
+            pm2 ps
