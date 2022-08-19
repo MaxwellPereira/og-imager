@@ -28,4 +28,7 @@ jobs:
             git clone https://github.com/MaxwellPereira/og-imager.git
             cd og-imager
             echo "$ENV" > .env
-            docker-compose up --build -d
+            docker build -t og-imager .
+            docker kill og-imager
+            docker container rm og-imager
+            docker build --name og-imager -dp 3002:3002 og-imager
