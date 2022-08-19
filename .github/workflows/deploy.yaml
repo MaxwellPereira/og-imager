@@ -31,4 +31,4 @@ jobs:
             docker build -t og-imager .
             docker kill og-imager
             docker container rm og-imager
-            docker build --name og-imager -dp 3002:3002 og-imager
+            docker run --name og-imager -dp 3002:3000 og-imager
