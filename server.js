@@ -23,7 +23,6 @@ app.get("/imgs/:id/ticket.png", async (req, res) => {
       (n, c) => n + "0",
       [""]
     );
-    console.log(zeroString);
     const compiledHTML = getCompiledHTML({
       title: `${data.first_name} ${data.last_name}`,
       ticketNumber: `#${zeroString}${numberId}`,
@@ -34,7 +33,6 @@ app.get("/imgs/:id/ticket.png", async (req, res) => {
       height: req.query.height,
       content: compiledHTML,
     });
-    fs.writeFileSync(`./tmp/${id}.png`, image);
 
     res.statusCode = 200;
 
