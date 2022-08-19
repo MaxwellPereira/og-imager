@@ -12,13 +12,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Test SSH
+      - name: Deploy
         uses: appleboy/ssh-action@master
+        env:
+          ENV: ${{secrets.PRD_ENV}}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
+          envs: ENV
           script: |
-            docker ps
-            pm2 ps
+            cd /home/deploy
+            rm -rf og-imager
+            git clone https://github.com/MaxwellPereira/og-imager.git
+            cd og-imager
+            echo "$ENV" > .env
+            docker-compose up --build -d
