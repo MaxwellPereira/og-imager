@@ -1,4 +1,4 @@
-# Open Graph Image Generator with NodeJS
+# Open Graph Image Generator with NodeJS + Dockerfile
 
 Implementation code accompanying [Create an Open Graph image generator with Node.js](https://blog.logrocket.com/create-open-graph-image-generator-node-js/) at LogRocket Blog
 
