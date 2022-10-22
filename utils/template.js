@@ -40,7 +40,8 @@ body {
     .readFileSync(`./assets/Ticket_v5.png`)
     .toString("base64")});
   background-position: center;
-  background-size: 100% 100%;
+  background-size: 95% 95%;
+  background-repeat: no-repeat;
 }
 
 main {
