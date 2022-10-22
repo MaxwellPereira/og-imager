@@ -7,7 +7,7 @@ async function generateImage({ width, height, content }) {
   try {
     const browser = await puppeteer.launch({
       headless: true,
-      args: ["--no-sandbox --include-background true"],
+      args: ["--no-sandbox"],
       defaultViewport: {
         width: DEFAULT_WIDTH,
         height: DEFAULT_HEIGHT,
@@ -25,7 +25,6 @@ async function generateImage({ width, height, content }) {
     // Ref: https://github.blog/2021-06-22-framework-building-open-graph-images/#some-performance-gotchas
     // Set the content to our rendered HTML
     await page.setContent(content, { waitUntil: "domcontentloaded" });
-    await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36WAIT_UNTIL=load")
     // Wait until all images and fonts have loaded
     await page.evaluate(async () => {
       const selectors = Array.from(document.querySelectorAll("img"));
