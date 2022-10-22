@@ -41,7 +41,7 @@ body {
     .toString("base64")});
   background-position: center;
   background-size: 95% 95%;
-  background-repeat: no-repeat;
+  background-repeat:no-repeat;
 }
 
 main {
