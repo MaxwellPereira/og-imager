@@ -88,14 +88,46 @@ app.get("/imgs/:id/ticket.png", async (req, res) => {
       (n, c) => n + "0",
       [""]
     );
-    const compiledHTML = getCompiledHTML({
-      title: `${data.first_name} ${data.last_name}`,
-      ticketNumber: `#${zeroString}${numberId}`,
-    });
+    const compiledHTML = getCompiledHTML(
+      './template.js',
+      {
+        title: `${data.first_name} ${data.last_name}`,
+        ticketNumber: `#${zeroString}${numberId}`,
+      });
 
     const image = await generateImage({
       width: req.query.width,
       height: req.query.height,
+      content: compiledHTML,
+    });
+
+    res.statusCode = 200;
+
+    res.setHeader("Content-Type", `image/png`);
+    res.setHeader(
+      "Cache-Control",
+      "public, immutable, no-transform, s-maxage=31536000, max-age=31536000"
+    );
+    res.end(image);
+  } catch (e) {
+    console.log(e);
+    res.status(500).send("Internal Server Error!");
+  }
+});
+
+app.get("/imgs/ticket.png", async (req, res) => {
+  try {
+    const { name } = req.query;
+
+    const compiledHTML = getCompiledHTML(
+      './template2.js',
+      {
+        title: `${name}`,
+      });
+
+    const image = await generateImage({
+      width: 1200,
+      height: 630,
       content: compiledHTML,
     });
 
