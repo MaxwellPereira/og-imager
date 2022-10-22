@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 
-const DEFAULT_WIDTH = 1200;
+const DEFAULT_WIDTH = 1216;
 const DEFAULT_HEIGHT = 630;
 
 async function generateImage({ width, height, content }) {
