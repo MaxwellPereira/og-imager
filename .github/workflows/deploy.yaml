@@ -29,6 +29,6 @@ jobs:
             cd og-imager
             echo "$ENV" > .env
             docker build -t og-imager .
-            docker kill og-imager
+            docker stop og-imager
             docker container rm og-imager
             docker run --name og-imager -dp 3002:3000 og-imager
