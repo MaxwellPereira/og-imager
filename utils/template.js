@@ -35,12 +35,13 @@ const templateStyles = `
 }
 
 body {
-  height: 90vh;
+  height: 100vh;
   background-image: url(data:image/png;base64,${fs
     .readFileSync(`./assets/Ticket_v5.png`)
     .toString("base64")});
   background-position: center;
-  background-size: 100% 100%;
+  background-size: 95% 95%;
+  background-repeat:no-repeat;
 
 }
 
@@ -48,6 +49,7 @@ main {
   height: 100%;
   width: 100%;
   display: flex;
+  padding: 24px;
   flex-direction: column;
 
 }
